@@ -1,0 +1,210 @@
+{
+    "title": "AWS IoT 1-Click Devices Service",
+    "description": "Stub description",
+    "docsUrl": "https://aws.amazon.com/iot1click/",
+    "url": "https://api.apis.guru/v2/specs/amazonaws.com/iot1click-devices/2018-05-14/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://devices.iot1click.amazonaws.com/",
+                    "http://devices.iot1click.amazonaws.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "hmac": {
+                "label": "Authorization (hmac)",
+                "viewClass": "TextFieldView",
+                "note": "Amazon Signature authorization v4"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "ClaimDevicesByClaimCode": {
+            "main": "./lib/actions/ClaimDevicesByClaimCode.js",
+            "title": "Adds device(s) to your account (i.e., claim one or more devices) if and only if\n you received a claim code with the device(s).",
+            "description": "Adds device(s) to your account (i.e., claim one or more devices) if and only if\n you received a claim code with the device(s).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ClaimDevicesByClaimCode.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ListDevices": {
+            "main": "./lib/actions/ListDevices.js",
+            "title": "Lists the 1-Click compatible devices associated with your AWS account.",
+            "description": "Lists the 1-Click compatible devices associated with your AWS account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListDevices.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DescribeDevice": {
+            "main": "./lib/actions/DescribeDevice.js",
+            "title": "Given a device ID, returns a DescribeDeviceResponse object describing\n the details of the device.",
+            "description": "Given a device ID, returns a DescribeDeviceResponse object describing\n the details of the device.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DescribeDevice.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ListDeviceEvents": {
+            "main": "./lib/actions/ListDeviceEvents.js",
+            "title": "Using a device ID, returns a DeviceEventsResponse object containing\n an array of events for the device.",
+            "description": "Using a device ID, returns a DeviceEventsResponse object containing\n an array of events for the device.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListDeviceEvents.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "FinalizeDeviceClaim": {
+            "main": "./lib/actions/FinalizeDeviceClaim.js",
+            "title": "<p>Given a device ID, finalizes the claim request for the associated device.</p><note>\n <p>Claiming a device consists of initiating a claim, then publishing a device\n event, and finalizing the claim. For a device of type button, a\n device event can be published by simply clicking the device.</p>\n </note>",
+            "description": "<p>Given a device ID, finalizes the claim request for the associated device.</p><note>\n <p>Claiming a device consists of initiating a claim, then publishing a device\n event, and finalizing the claim. For a device of type button, a\n device event can be published by simply clicking the device.</p>\n </note>",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/FinalizeDeviceClaim.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "InitiateDeviceClaim": {
+            "main": "./lib/actions/InitiateDeviceClaim.js",
+            "title": "<p>Given a device ID, initiates a claim request for the associated device.</p><note>\n <p>Claiming a device consists of initiating a claim, then publishing a device\n event, and finalizing the claim. For a device of type button, a\n device event can be published by simply clicking the device.</p>\n </note>",
+            "description": "<p>Given a device ID, initiates a claim request for the associated device.</p><note>\n <p>Claiming a device consists of initiating a claim, then publishing a device\n event, and finalizing the claim. For a device of type button, a\n device event can be published by simply clicking the device.</p>\n </note>",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/InitiateDeviceClaim.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetDeviceMethods": {
+            "main": "./lib/actions/GetDeviceMethods.js",
+            "title": "Given a device ID, returns the invokable methods associated with the\n device.",
+            "description": "Given a device ID, returns the invokable methods associated with the\n device.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetDeviceMethods.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "InvokeDeviceMethod": {
+            "main": "./lib/actions/InvokeDeviceMethod.js",
+            "title": "Given a device ID, issues a request to invoke a named device method (with possible\n parameters). See the \"Example POST\" code snippet below.",
+            "description": "Given a device ID, issues a request to invoke a named device method (with possible\n parameters). See the \"Example POST\" code snippet below.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/InvokeDeviceMethod.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateDeviceState": {
+            "main": "./lib/actions/UpdateDeviceState.js",
+            "title": "Using a Boolean value (true or false), this operation\n enables or disables the device given a device ID.",
+            "description": "Using a Boolean value (true or false), this operation\n enables or disables the device given a device ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateDeviceState.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UnclaimDevice": {
+            "main": "./lib/actions/UnclaimDevice.js",
+            "title": "Disassociates a device from your AWS account using its device ID.",
+            "description": "Disassociates a device from your AWS account using its device ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UnclaimDevice.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

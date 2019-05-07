@@ -1,0 +1,2813 @@
+{
+    "openapi": "3.0.0",
+    "servers": [
+        {
+            "url": "https://devices.iot1click.amazonaws.com/"
+        },
+        {
+            "url": "http://devices.iot1click.amazonaws.com/"
+        }
+    ],
+    "info": {
+        "contact": {
+            "email": "mike.ralphson@gmail.com",
+            "name": "Mike Ralphson",
+            "url": "https://github.com/mermade/aws2openapi",
+            "x-twitter": "PermittedSoc"
+        },
+        "description": "Stub description",
+        "license": {
+            "name": "Apache 2.0 License",
+            "url": "http://www.apache.org/licenses/"
+        },
+        "termsOfService": "https://aws.amazon.com/service-terms/",
+        "title": "AWS IoT 1-Click Devices Service",
+        "version": "2018-05-14",
+        "x-apiClientRegistration": {
+            "url": "https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct"
+        },
+        "x-apisguru-categories": [
+            "cloud"
+        ],
+        "x-logo": {
+            "backgroundColor": "#FFFFFF",
+            "url": "https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.jpeg"
+        },
+        "x-origin": [
+            {
+                "contentType": "application/json",
+                "converter": {
+                    "url": "https://github.com/mermade/aws2openapi",
+                    "version": "1.0.0"
+                },
+                "url": "https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/iot1click-devices-2018-05-14.normal.json",
+                "x-apisguru-direct": true
+            }
+        ],
+        "x-preferred": true,
+        "x-providerName": "amazonaws.com",
+        "x-release": "v4",
+        "x-serviceName": "iot1click-devices"
+    },
+    "externalDocs": {
+        "description": "Amazon Web Services documentation",
+        "url": "https://aws.amazon.com/iot1click/"
+    },
+    "security": [
+        {
+            "hmac": []
+        }
+    ],
+    "paths": {
+        "/claims/{claimCode}": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "put": {
+                "description": "Adds device(s) to your account (i.e., claim one or more devices) if and only if\n you received a claim code with the device(s).",
+                "operationId": "ClaimDevicesByClaimCode",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "claimCode",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "ClaimCode": {
+                                            "description": "The claim code provided by the device manufacturer.",
+                                            "maxLength": 40,
+                                            "minLength": 12,
+                                            "type": "string"
+                                        },
+                                        "Total": {
+                                            "description": "The total number of devices associated with the claim code that has been processed\n in the claim request.",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "400",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 400 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "500",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 500 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "ForbiddenException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "403",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 403 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {},
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/devices": {
+            "get": {
+                "description": "Lists the 1-Click compatible devices associated with your AWS account.",
+                "operationId": "ListDevices",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Devices": {
+                                            "description": "A list of devices.",
+                                            "items": {
+                                                "properties": {
+                                                    "Attributes": {
+                                                        "description": "An array of zero or more elements of DeviceAttribute objects\n providing user specified device attributes.",
+                                                        "items": {
+                                                            "properties": {
+                                                                "key": {
+                                                                    "type": "string"
+                                                                },
+                                                                "value": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        },
+                                                        "type": "array"
+                                                    },
+                                                    "DeviceId": {
+                                                        "description": "The unique identifier of the device.",
+                                                        "type": "string"
+                                                    },
+                                                    "Enabled": {
+                                                        "description": "A Boolean value indicating whether or not the device is enabled.",
+                                                        "type": "boolean"
+                                                    },
+                                                    "RemainingLife": {
+                                                        "description": "A value between 0 and 1 inclusive, representing the fraction of life remaining for\n the device.",
+                                                        "format": "double",
+                                                        "type": "number"
+                                                    },
+                                                    "Type": {
+                                                        "description": "The type of the device, such as \"button\".",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "NextToken": {
+                                            "description": "The token to retrieve the next set of results.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "RangeNotSatisfiableException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "416",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The requested number of results specified by nextToken cannot be\n satisfied.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "400",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 400 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "500",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 500 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {},
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            },
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ]
+        },
+        "/devices/{deviceId}": {
+            "get": {
+                "description": "Given a device ID, returns a DescribeDeviceResponse object describing\n the details of the device.",
+                "operationId": "DescribeDevice",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "deviceId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "DeviceDescription": {
+                                            "description": "Device details.",
+                                            "properties": {
+                                                "Attributes": {
+                                                    "description": "An array of zero or more elements of DeviceAttribute objects\n providing user specified device attributes.",
+                                                    "items": {
+                                                        "properties": {
+                                                            "key": {
+                                                                "type": "string"
+                                                            },
+                                                            "value": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "type": "array"
+                                                },
+                                                "DeviceId": {
+                                                    "description": "The unique identifier of the device.",
+                                                    "type": "string"
+                                                },
+                                                "Enabled": {
+                                                    "description": "A Boolean value indicating whether or not the device is enabled.",
+                                                    "type": "boolean"
+                                                },
+                                                "RemainingLife": {
+                                                    "description": "A value between 0 and 1 inclusive, representing the fraction of life remaining for\n the device.",
+                                                    "format": "double",
+                                                    "type": "number"
+                                                },
+                                                "Type": {
+                                                    "description": "The type of the device, such as \"button\".",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "404",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The requested device could not be found.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "400",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 400 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "500",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 500 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {},
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            },
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ]
+        },
+        "/devices/{deviceId}/events": {
+            "get": {
+                "description": "Using a device ID, returns a DeviceEventsResponse object containing\n an array of events for the device.",
+                "operationId": "ListDeviceEvents",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "deviceId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Events": {
+                                            "description": "An array of zero or more elements describing the event(s) associated with the\n device.",
+                                            "items": {
+                                                "properties": {
+                                                    "Device": {
+                                                        "description": "An object representing the device associated with the event.",
+                                                        "properties": {
+                                                            "Attributes": {
+                                                                "description": "The user specified attributes associated with the device for an event.",
+                                                                "properties": {},
+                                                                "type": "object"
+                                                            },
+                                                            "DeviceId": {
+                                                                "description": "The unique identifier of the device.",
+                                                                "type": "string"
+                                                            },
+                                                            "Type": {
+                                                                "description": "The device type, such as \"button\".",
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "StdEvent": {
+                                                        "description": "A serialized JSON object representing the device-type specific event.",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "NextToken": {
+                                            "description": "The token to retrieve the next set of results.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "404",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The requested device could not be found.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "RangeNotSatisfiableException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "416",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The requested number of results specified by nextToken cannot be\n satisfied.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "400",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 400 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "500",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 500 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {},
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            },
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ]
+        },
+        "/devices/{deviceId}/finalize-claim": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "put": {
+                "description": "<p>Given a device ID, finalizes the claim request for the associated device.</p><note>\n <p>Claiming a device consists of initiating a claim, then publishing a device\n event, and finalizing the claim. For a device of type button, a\n device event can be published by simply clicking the device.</p>\n </note>",
+                "operationId": "FinalizeDeviceClaim",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "deviceId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "State": {
+                                            "description": "The device's final claim state.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "404",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The requested device could not be found.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "400",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 400 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "500",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 500 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "PreconditionFailedException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "412",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "An error message explaining the error or its remedy.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "484": {
+                        "description": "ResourceConflictException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "409",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "An error message explaining the error or its remedy.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {},
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/devices/{deviceId}/initiate-claim": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "put": {
+                "description": "<p>Given a device ID, initiates a claim request for the associated device.</p><note>\n <p>Claiming a device consists of initiating a claim, then publishing a device\n event, and finalizing the claim. For a device of type button, a\n device event can be published by simply clicking the device.</p>\n </note>",
+                "operationId": "InitiateDeviceClaim",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "deviceId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "State": {
+                                            "description": "The device's final claim state.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "404",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The requested device could not be found.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "400",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 400 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "500",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 500 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "ResourceConflictException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "409",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "An error message explaining the error or its remedy.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {},
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/devices/{deviceId}/methods": {
+            "get": {
+                "description": "Given a device ID, returns the invokable methods associated with the\n device.",
+                "operationId": "GetDeviceMethods",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "deviceId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "DeviceMethods": {
+                                            "description": "List of available device APIs.",
+                                            "items": {
+                                                "properties": {
+                                                    "DeviceType": {
+                                                        "description": "The type of the device, such as \"button\".",
+                                                        "type": "string"
+                                                    },
+                                                    "MethodName": {
+                                                        "description": "The name of the method applicable to the deviceType.",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "404",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The requested device could not be found.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "400",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 400 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "500",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 500 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {},
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            },
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "Given a device ID, issues a request to invoke a named device method (with possible\n parameters). See the \"Example POST\" code snippet below.",
+                "operationId": "InvokeDeviceMethod",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "deviceId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "DeviceMethodResponse": {
+                                            "description": "A JSON encoded string containing the device method response.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "400",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 400 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "PreconditionFailedException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "412",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "An error message explaining the error or its remedy.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "500",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 500 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "404",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The requested device could not be found.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "484": {
+                        "description": "RangeNotSatisfiableException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "416",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The requested number of results specified by nextToken cannot be\n satisfied.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "485": {
+                        "description": "ResourceConflictException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "409",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "An error message explaining the error or its remedy.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "DeviceMethod": {
+                                        "description": "The device method to invoke.",
+                                        "properties": {
+                                            "DeviceType": {
+                                                "description": "The type of the device, such as \"button\".",
+                                                "type": "string"
+                                            },
+                                            "MethodName": {
+                                                "description": "The name of the method applicable to the deviceType.",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "DeviceMethodParameters": {
+                                        "description": "A JSON encoded string containing the device method request parameters.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/devices/{deviceId}/state": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "put": {
+                "description": "Using a Boolean value (true or false), this operation\n enables or disables the device given a device ID.",
+                "operationId": "UpdateDeviceState",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "deviceId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {},
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "404",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The requested device could not be found.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "400",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 400 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "500",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 500 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "Enabled": {
+                                        "description": "If true, the device is enabled. If false, the device is\n disabled.",
+                                        "type": "boolean"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/devices/{deviceId}/unclaim": {
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "put": {
+                "description": "Disassociates a device from your AWS account using its device ID.",
+                "operationId": "UnclaimDevice",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "deviceId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "State": {
+                                            "description": "The device's final claim state.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "404",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The requested device could not be found.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "400",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 400 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Code": {
+                                            "description": "500",
+                                            "type": "string"
+                                        },
+                                        "Message": {
+                                            "description": "The 500 error message returned by the web server.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {},
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Attributes": {
+                "properties": {},
+                "type": "object"
+            },
+            "ClaimDevicesByClaimCodeRequest": {
+                "properties": {},
+                "type": "object"
+            },
+            "ClaimDevicesByClaimCodeResponse": {
+                "properties": {
+                    "ClaimCode": {
+                        "description": "The claim code provided by the device manufacturer.",
+                        "maxLength": 40,
+                        "minLength": 12,
+                        "type": "string"
+                    },
+                    "Total": {
+                        "description": "The total number of devices associated with the claim code that has been processed\n in the claim request.",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "DescribeDeviceRequest": {
+                "properties": {},
+                "type": "object"
+            },
+            "DescribeDeviceResponse": {
+                "properties": {
+                    "DeviceDescription": {
+                        "description": "Device details.",
+                        "properties": {
+                            "Attributes": {
+                                "description": "An array of zero or more elements of DeviceAttribute objects\n providing user specified device attributes.",
+                                "items": {
+                                    "properties": {
+                                        "key": {
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "DeviceId": {
+                                "description": "The unique identifier of the device.",
+                                "type": "string"
+                            },
+                            "Enabled": {
+                                "description": "A Boolean value indicating whether or not the device is enabled.",
+                                "type": "boolean"
+                            },
+                            "RemainingLife": {
+                                "description": "A value between 0 and 1 inclusive, representing the fraction of life remaining for\n the device.",
+                                "format": "double",
+                                "type": "number"
+                            },
+                            "Type": {
+                                "description": "The type of the device, such as \"button\".",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "Device": {
+                "properties": {
+                    "Attributes": {
+                        "description": "The user specified attributes associated with the device for an event.",
+                        "properties": {},
+                        "type": "object"
+                    },
+                    "DeviceId": {
+                        "description": "The unique identifier of the device.",
+                        "type": "string"
+                    },
+                    "Type": {
+                        "description": "The device type, such as \"button\".",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "DeviceAttributes": {
+                "description": "\nDeviceAttributes is a string-to-string map specified by the user.",
+                "items": {
+                    "properties": {
+                        "key": {
+                            "type": "string"
+                        },
+                        "value": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            },
+            "DeviceClaimResponse": {
+                "properties": {
+                    "State": {
+                        "description": "The device's final claim state.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "DeviceDescription": {
+                "properties": {
+                    "Attributes": {
+                        "description": "An array of zero or more elements of DeviceAttribute objects\n providing user specified device attributes.",
+                        "items": {
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "DeviceId": {
+                        "description": "The unique identifier of the device.",
+                        "type": "string"
+                    },
+                    "Enabled": {
+                        "description": "A Boolean value indicating whether or not the device is enabled.",
+                        "type": "boolean"
+                    },
+                    "RemainingLife": {
+                        "description": "A value between 0 and 1 inclusive, representing the fraction of life remaining for\n the device.",
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "Type": {
+                        "description": "The type of the device, such as \"button\".",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "DeviceEvent": {
+                "properties": {
+                    "Device": {
+                        "description": "An object representing the device associated with the event.",
+                        "properties": {
+                            "Attributes": {
+                                "description": "The user specified attributes associated with the device for an event.",
+                                "properties": {},
+                                "type": "object"
+                            },
+                            "DeviceId": {
+                                "description": "The unique identifier of the device.",
+                                "type": "string"
+                            },
+                            "Type": {
+                                "description": "The device type, such as \"button\".",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "StdEvent": {
+                        "description": "A serialized JSON object representing the device-type specific event.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "DeviceEventsResponse": {
+                "properties": {
+                    "Events": {
+                        "description": "An array of zero or more elements describing the event(s) associated with the\n device.",
+                        "items": {
+                            "properties": {
+                                "Device": {
+                                    "description": "An object representing the device associated with the event.",
+                                    "properties": {
+                                        "Attributes": {
+                                            "description": "The user specified attributes associated with the device for an event.",
+                                            "properties": {},
+                                            "type": "object"
+                                        },
+                                        "DeviceId": {
+                                            "description": "The unique identifier of the device.",
+                                            "type": "string"
+                                        },
+                                        "Type": {
+                                            "description": "The device type, such as \"button\".",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "StdEvent": {
+                                    "description": "A serialized JSON object representing the device-type specific event.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "NextToken": {
+                        "description": "The token to retrieve the next set of results.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "DeviceMethod": {
+                "properties": {
+                    "DeviceType": {
+                        "description": "The type of the device, such as \"button\".",
+                        "type": "string"
+                    },
+                    "MethodName": {
+                        "description": "The name of the method applicable to the deviceType.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Empty": {
+                "description": "On success, an empty object is returned.",
+                "properties": {},
+                "type": "object"
+            },
+            "FinalizeDeviceClaimRequest": {
+                "properties": {},
+                "type": "object"
+            },
+            "FinalizeDeviceClaimResponse": {
+                "properties": {
+                    "State": {
+                        "description": "The device's final claim state.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ForbiddenException": {
+                "properties": {
+                    "Code": {
+                        "description": "403",
+                        "type": "string"
+                    },
+                    "Message": {
+                        "description": "The 403 error message returned by the web server.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "GetDeviceMethodsRequest": {
+                "properties": {},
+                "type": "object"
+            },
+            "GetDeviceMethodsResponse": {
+                "properties": {
+                    "DeviceMethods": {
+                        "description": "List of available device APIs.",
+                        "items": {
+                            "properties": {
+                                "DeviceType": {
+                                    "description": "The type of the device, such as \"button\".",
+                                    "type": "string"
+                                },
+                                "MethodName": {
+                                    "description": "The name of the method applicable to the deviceType.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "InitiateDeviceClaimRequest": {
+                "properties": {},
+                "type": "object"
+            },
+            "InitiateDeviceClaimResponse": {
+                "properties": {
+                    "State": {
+                        "description": "The device's final claim state.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "InternalFailureException": {
+                "properties": {
+                    "Code": {
+                        "description": "500",
+                        "type": "string"
+                    },
+                    "Message": {
+                        "description": "The 500 error message returned by the web server.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "InvalidRequestException": {
+                "properties": {
+                    "Code": {
+                        "description": "400",
+                        "type": "string"
+                    },
+                    "Message": {
+                        "description": "The 400 error message returned by the web server.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "InvokeDeviceMethodRequest": {
+                "properties": {
+                    "DeviceMethod": {
+                        "description": "The device method to invoke.",
+                        "properties": {
+                            "DeviceType": {
+                                "description": "The type of the device, such as \"button\".",
+                                "type": "string"
+                            },
+                            "MethodName": {
+                                "description": "The name of the method applicable to the deviceType.",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "DeviceMethodParameters": {
+                        "description": "A JSON encoded string containing the device method request parameters.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "InvokeDeviceMethodResponse": {
+                "properties": {
+                    "DeviceMethodResponse": {
+                        "description": "A JSON encoded string containing the device method response.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ListDeviceEventsRequest": {
+                "properties": {},
+                "type": "object"
+            },
+            "ListDeviceEventsResponse": {
+                "properties": {
+                    "Events": {
+                        "description": "An array of zero or more elements describing the event(s) associated with the\n device.",
+                        "items": {
+                            "properties": {
+                                "Device": {
+                                    "description": "An object representing the device associated with the event.",
+                                    "properties": {
+                                        "Attributes": {
+                                            "description": "The user specified attributes associated with the device for an event.",
+                                            "properties": {},
+                                            "type": "object"
+                                        },
+                                        "DeviceId": {
+                                            "description": "The unique identifier of the device.",
+                                            "type": "string"
+                                        },
+                                        "Type": {
+                                            "description": "The device type, such as \"button\".",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "StdEvent": {
+                                    "description": "A serialized JSON object representing the device-type specific event.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "NextToken": {
+                        "description": "The token to retrieve the next set of results.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ListDevicesRequest": {
+                "properties": {},
+                "type": "object"
+            },
+            "ListDevicesResponse": {
+                "properties": {
+                    "Devices": {
+                        "description": "A list of devices.",
+                        "items": {
+                            "properties": {
+                                "Attributes": {
+                                    "description": "An array of zero or more elements of DeviceAttribute objects\n providing user specified device attributes.",
+                                    "items": {
+                                        "properties": {
+                                            "key": {
+                                                "type": "string"
+                                            },
+                                            "value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "DeviceId": {
+                                    "description": "The unique identifier of the device.",
+                                    "type": "string"
+                                },
+                                "Enabled": {
+                                    "description": "A Boolean value indicating whether or not the device is enabled.",
+                                    "type": "boolean"
+                                },
+                                "RemainingLife": {
+                                    "description": "A value between 0 and 1 inclusive, representing the fraction of life remaining for\n the device.",
+                                    "format": "double",
+                                    "type": "number"
+                                },
+                                "Type": {
+                                    "description": "The type of the device, such as \"button\".",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "NextToken": {
+                        "description": "The token to retrieve the next set of results.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "MaxResults": {
+                "maximum": 250,
+                "minimum": 1,
+                "type": "integer"
+            },
+            "PreconditionFailedException": {
+                "properties": {
+                    "Code": {
+                        "description": "412",
+                        "type": "string"
+                    },
+                    "Message": {
+                        "description": "An error message explaining the error or its remedy.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "RangeNotSatisfiableException": {
+                "properties": {
+                    "Code": {
+                        "description": "416",
+                        "type": "string"
+                    },
+                    "Message": {
+                        "description": "The requested number of results specified by nextToken cannot be\n satisfied.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ResourceConflictException": {
+                "properties": {
+                    "Code": {
+                        "description": "409",
+                        "type": "string"
+                    },
+                    "Message": {
+                        "description": "An error message explaining the error or its remedy.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ResourceNotFoundException": {
+                "properties": {
+                    "Code": {
+                        "description": "404",
+                        "type": "string"
+                    },
+                    "Message": {
+                        "description": "The requested device could not be found.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "UnclaimDeviceRequest": {
+                "properties": {},
+                "type": "object"
+            },
+            "UnclaimDeviceResponse": {
+                "properties": {
+                    "State": {
+                        "description": "The device's final claim state.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateDeviceStateRequest": {
+                "properties": {
+                    "Enabled": {
+                        "description": "If true, the device is enabled. If false, the device is\n disabled.",
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateDeviceStateResponse": {
+                "properties": {},
+                "type": "object"
+            },
+            "__boolean": {
+                "type": "boolean"
+            },
+            "__double": {
+                "format": "double",
+                "type": "number"
+            },
+            "__doubleMin0Max100": {
+                "format": "double",
+                "type": "number"
+            },
+            "__integer": {
+                "type": "integer"
+            },
+            "__listOfDeviceDescription": {
+                "items": {
+                    "properties": {
+                        "Attributes": {
+                            "description": "An array of zero or more elements of DeviceAttribute objects\n providing user specified device attributes.",
+                            "items": {
+                                "properties": {
+                                    "key": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "DeviceId": {
+                            "description": "The unique identifier of the device.",
+                            "type": "string"
+                        },
+                        "Enabled": {
+                            "description": "A Boolean value indicating whether or not the device is enabled.",
+                            "type": "boolean"
+                        },
+                        "RemainingLife": {
+                            "description": "A value between 0 and 1 inclusive, representing the fraction of life remaining for\n the device.",
+                            "format": "double",
+                            "type": "number"
+                        },
+                        "Type": {
+                            "description": "The type of the device, such as \"button\".",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            },
+            "__listOfDeviceEvent": {
+                "items": {
+                    "properties": {
+                        "Device": {
+                            "description": "An object representing the device associated with the event.",
+                            "properties": {
+                                "Attributes": {
+                                    "description": "The user specified attributes associated with the device for an event.",
+                                    "properties": {},
+                                    "type": "object"
+                                },
+                                "DeviceId": {
+                                    "description": "The unique identifier of the device.",
+                                    "type": "string"
+                                },
+                                "Type": {
+                                    "description": "The device type, such as \"button\".",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "StdEvent": {
+                            "description": "A serialized JSON object representing the device-type specific event.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            },
+            "__listOfDeviceMethod": {
+                "items": {
+                    "properties": {
+                        "DeviceType": {
+                            "description": "The type of the device, such as \"button\".",
+                            "type": "string"
+                        },
+                        "MethodName": {
+                            "description": "The name of the method applicable to the deviceType.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            },
+            "__long": {
+                "type": "integer"
+            },
+            "__string": {
+                "type": "string"
+            },
+            "__stringMin12Max40": {
+                "maxLength": 40,
+                "minLength": 12,
+                "type": "string"
+            },
+            "__timestampIso8601": {
+                "format": "date-time",
+                "type": "string"
+            },
+            "__timestampUnix": {
+                "format": "date-time",
+                "type": "string"
+            }
+        },
+        "parameters": {
+            "Action": {
+                "in": "query",
+                "name": "Action",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "Version": {
+                "in": "query",
+                "name": "Version",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Algorithm": {
+                "in": "header",
+                "name": "X-Amz-Algorithm",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Content-Sha256": {
+                "in": "header",
+                "name": "X-Amz-Content-Sha256",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Credential": {
+                "in": "header",
+                "name": "X-Amz-Credential",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Date": {
+                "in": "header",
+                "name": "X-Amz-Date",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Security-Token": {
+                "in": "header",
+                "name": "X-Amz-Security-Token",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Signature": {
+                "in": "header",
+                "name": "X-Amz-Signature",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-SignedHeaders": {
+                "in": "header",
+                "name": "X-Amz-SignedHeaders",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "requestBodies": {
+            "ClaimDevicesByClaimCodeBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {},
+                            "type": "object"
+                        }
+                    }
+                },
+                "required": true
+            }
+        },
+        "securitySchemes": {
+            "hmac": {
+                "description": "Amazon Signature authorization v4",
+                "in": "header",
+                "name": "Authorization",
+                "type": "apiKey",
+                "x-amazon-apigateway-authtype": "awsSigv4"
+            }
+        }
+    }
+}

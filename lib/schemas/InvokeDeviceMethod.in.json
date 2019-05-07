@@ -1,0 +1,64 @@
+{
+    "type": "object",
+    "properties": {
+        "deviceId": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "DeviceMethod": {
+                    "description": "The device method to invoke.",
+                    "properties": {
+                        "DeviceType": {
+                            "description": "The type of the device, such as \"button\".",
+                            "type": "string"
+                        },
+                        "MethodName": {
+                            "description": "The name of the method applicable to the deviceType.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "DeviceMethodParameters": {
+                    "description": "A JSON encoded string containing the device method request parameters.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

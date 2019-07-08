@@ -5,11 +5,11 @@
 A generated **flow**ground connector for the AWS IoT 1-Click Devices Service API (version 2018-05-14).
 
 Generated from: https://api.apis.guru/v2/specs/amazonaws.com/iot1click-devices/2018-05-14/swagger.json<br/>
-Generated at: 2019-05-07T17:35:46+03:00
+Generated at: 2019-07-08T14:35:39+03:00
 
 ## API Description
 
-Stub description
+Stub description<br/>
 
 ## Authorization
 
@@ -17,8 +17,9 @@ Supported authorization schemes:
 - API Key
 ## Actions
 
-### Adds device(s) to your account (i.e., claim one or more devices) if and only if<br/>
->  you received a claim code with the device(s).
+### ClaimDevicesByClaimCode
+> Adds device(s) to your account (i.e., claim one or more devices) if and only if<br/>
+>  you received a claim code with the device(s).<br/>
 
 #### Input Parameters
 * `claimCode` - _required_
@@ -31,7 +32,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Lists the 1-Click compatible devices associated with your AWS account.
+### ListDevices
+> Lists the 1-Click compatible devices associated with your AWS account.<br/>
 
 #### Input Parameters
 * `Action` - _required_
@@ -44,8 +46,9 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Given a device ID, returns a DescribeDeviceResponse object describing<br/>
->  the details of the device.
+### DescribeDevice
+> Given a device ID, returns a DescribeDeviceResponse object describing<br/>
+>  the details of the device.<br/>
 
 #### Input Parameters
 * `deviceId` - _required_
@@ -58,8 +61,9 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Using a device ID, returns a DeviceEventsResponse object containing<br/>
->  an array of events for the device.
+### ListDeviceEvents
+> Using a device ID, returns a DeviceEventsResponse object containing<br/>
+>  an array of events for the device.<br/>
 
 #### Input Parameters
 * `deviceId` - _required_
@@ -72,11 +76,12 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### <p>Given a device ID, finalizes the claim request for the associated device.</p><note><br/>
->  <p>Claiming a device consists of initiating a claim, then publishing a device<br/>
->  event, and finalizing the claim. For a device of type button, a<br/>
->  device event can be published by simply clicking the device.</p><br/>
->  </note>
+### FinalizeDeviceClaim
+<blockquote><p>Given a device ID, finalizes the claim request for the associated device.</p><note>
+ <p>Claiming a device consists of initiating a claim, then publishing a device
+ event, and finalizing the claim. For a device of type button, a
+ device event can be published by simply clicking the device.</p>
+ </note></blockquote>
 
 #### Input Parameters
 * `deviceId` - _required_
@@ -89,11 +94,12 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### <p>Given a device ID, initiates a claim request for the associated device.</p><note><br/>
->  <p>Claiming a device consists of initiating a claim, then publishing a device<br/>
->  event, and finalizing the claim. For a device of type button, a<br/>
->  device event can be published by simply clicking the device.</p><br/>
->  </note>
+### InitiateDeviceClaim
+<blockquote><p>Given a device ID, initiates a claim request for the associated device.</p><note>
+ <p>Claiming a device consists of initiating a claim, then publishing a device
+ event, and finalizing the claim. For a device of type button, a
+ device event can be published by simply clicking the device.</p>
+ </note></blockquote>
 
 #### Input Parameters
 * `deviceId` - _required_
@@ -106,8 +112,9 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Given a device ID, returns the invokable methods associated with the<br/>
->  device.
+### GetDeviceMethods
+> Given a device ID, returns the invokable methods associated with the<br/>
+>  device.<br/>
 
 #### Input Parameters
 * `deviceId` - _required_
@@ -120,8 +127,9 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Given a device ID, issues a request to invoke a named device method (with possible<br/>
->  parameters). See the "Example POST" code snippet below.
+### InvokeDeviceMethod
+> Given a device ID, issues a request to invoke a named device method (with possible<br/>
+>  parameters). See the "Example POST" code snippet below.<br/>
 
 #### Input Parameters
 * `deviceId` - _required_
@@ -134,8 +142,9 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Using a Boolean value (true or false), this operation<br/>
->  enables or disables the device given a device ID.
+### UpdateDeviceState
+> Using a Boolean value (true or false), this operation<br/>
+>  enables or disables the device given a device ID.<br/>
 
 #### Input Parameters
 * `deviceId` - _required_
@@ -148,7 +157,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Disassociates a device from your AWS account using its device ID.
+### UnclaimDevice
+> Disassociates a device from your AWS account using its device ID.<br/>
 
 #### Input Parameters
 * `deviceId` - _required_

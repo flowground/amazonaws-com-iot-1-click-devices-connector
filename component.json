@@ -20,7 +20,7 @@
                 "label": "Custom Server URL",
                 "viewClass": "TextFieldView"
             },
-            "hmac": {
+            "auth_hmac": {
                 "label": "Authorization (hmac)",
                 "viewClass": "TextFieldView",
                 "note": "Amazon Signature authorization v4"
@@ -38,7 +38,7 @@
     "actions": {
         "ClaimDevicesByClaimCode": {
             "main": "./lib/actions/ClaimDevicesByClaimCode.js",
-            "title": "Adds device(s) to your account (i.e., claim one or more devices) if and only if\n you received a claim code with the device(s).",
+            "title": "ClaimDevicesByClaimCode",
             "description": "Adds device(s) to your account (i.e., claim one or more devices) if and only if\n you received a claim code with the device(s).",
             "fields": {
                 "verbose": {
@@ -55,7 +55,7 @@
         },
         "ListDevices": {
             "main": "./lib/actions/ListDevices.js",
-            "title": "Lists the 1-Click compatible devices associated with your AWS account.",
+            "title": "ListDevices",
             "description": "Lists the 1-Click compatible devices associated with your AWS account.",
             "fields": {
                 "verbose": {
@@ -72,7 +72,7 @@
         },
         "DescribeDevice": {
             "main": "./lib/actions/DescribeDevice.js",
-            "title": "Given a device ID, returns a DescribeDeviceResponse object describing\n the details of the device.",
+            "title": "DescribeDevice",
             "description": "Given a device ID, returns a DescribeDeviceResponse object describing\n the details of the device.",
             "fields": {
                 "verbose": {
@@ -89,7 +89,7 @@
         },
         "ListDeviceEvents": {
             "main": "./lib/actions/ListDeviceEvents.js",
-            "title": "Using a device ID, returns a DeviceEventsResponse object containing\n an array of events for the device.",
+            "title": "ListDeviceEvents",
             "description": "Using a device ID, returns a DeviceEventsResponse object containing\n an array of events for the device.",
             "fields": {
                 "verbose": {
@@ -106,8 +106,8 @@
         },
         "FinalizeDeviceClaim": {
             "main": "./lib/actions/FinalizeDeviceClaim.js",
-            "title": "<p>Given a device ID, finalizes the claim request for the associated device.</p><note>\n <p>Claiming a device consists of initiating a claim, then publishing a device\n event, and finalizing the claim. For a device of type button, a\n device event can be published by simply clicking the device.</p>\n </note>",
-            "description": "<p>Given a device ID, finalizes the claim request for the associated device.</p><note>\n <p>Claiming a device consists of initiating a claim, then publishing a device\n event, and finalizing the claim. For a device of type button, a\n device event can be published by simply clicking the device.</p>\n </note>",
+            "title": "FinalizeDeviceClaim",
+            "description": "Given a device ID, finalizes the claim request for the associated device.\n\nClaiming a device consists of initiating a claim, then publishing a device\nevent, and finalizing the claim. For a device of type button, a device event can\nbe published by simply clicking the device.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -123,8 +123,8 @@
         },
         "InitiateDeviceClaim": {
             "main": "./lib/actions/InitiateDeviceClaim.js",
-            "title": "<p>Given a device ID, initiates a claim request for the associated device.</p><note>\n <p>Claiming a device consists of initiating a claim, then publishing a device\n event, and finalizing the claim. For a device of type button, a\n device event can be published by simply clicking the device.</p>\n </note>",
-            "description": "<p>Given a device ID, initiates a claim request for the associated device.</p><note>\n <p>Claiming a device consists of initiating a claim, then publishing a device\n event, and finalizing the claim. For a device of type button, a\n device event can be published by simply clicking the device.</p>\n </note>",
+            "title": "InitiateDeviceClaim",
+            "description": "Given a device ID, initiates a claim request for the associated device.\n\nClaiming a device consists of initiating a claim, then publishing a device\nevent, and finalizing the claim. For a device of type button, a device event can\nbe published by simply clicking the device.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -140,7 +140,7 @@
         },
         "GetDeviceMethods": {
             "main": "./lib/actions/GetDeviceMethods.js",
-            "title": "Given a device ID, returns the invokable methods associated with the\n device.",
+            "title": "GetDeviceMethods",
             "description": "Given a device ID, returns the invokable methods associated with the\n device.",
             "fields": {
                 "verbose": {
@@ -157,7 +157,7 @@
         },
         "InvokeDeviceMethod": {
             "main": "./lib/actions/InvokeDeviceMethod.js",
-            "title": "Given a device ID, issues a request to invoke a named device method (with possible\n parameters). See the \"Example POST\" code snippet below.",
+            "title": "InvokeDeviceMethod",
             "description": "Given a device ID, issues a request to invoke a named device method (with possible\n parameters). See the \"Example POST\" code snippet below.",
             "fields": {
                 "verbose": {
@@ -174,7 +174,7 @@
         },
         "UpdateDeviceState": {
             "main": "./lib/actions/UpdateDeviceState.js",
-            "title": "Using a Boolean value (true or false), this operation\n enables or disables the device given a device ID.",
+            "title": "UpdateDeviceState",
             "description": "Using a Boolean value (true or false), this operation\n enables or disables the device given a device ID.",
             "fields": {
                 "verbose": {
@@ -191,7 +191,7 @@
         },
         "UnclaimDevice": {
             "main": "./lib/actions/UnclaimDevice.js",
-            "title": "Disassociates a device from your AWS account using its device ID.",
+            "title": "UnclaimDevice",
             "description": "Disassociates a device from your AWS account using its device ID.",
             "fields": {
                 "verbose": {
